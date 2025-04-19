@@ -26,7 +26,7 @@ cursor.execute("""
 db.commit()
 
 email = "kirillkasparyants@yandex.ru"
-password = codecs.decode("6a706e6479746e7762756d79766e6f61", "hex").decode("utf-8")
+password = codecs.decode("", "hex").decode("utf-8")
 server = smtplib.SMTP("smtp.yandex.ru", 587)
 server.starttls()
 server.ehlo(email)
